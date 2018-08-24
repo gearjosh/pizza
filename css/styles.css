@@ -1,5 +1,9 @@
-.container {
+#order-builder {
+  display: none;
+}
 
+.header {
+  margin-bottom: 15px;
 }
 
 .toppings {
