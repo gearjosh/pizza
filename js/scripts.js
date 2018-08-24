@@ -58,6 +58,10 @@ Pizza.prototype.selectSize = function(value) {
     this.size = "xl"
     this.sizeCost = 20;
     this.sizeMultiplier = 2;
+  } else {
+    this.size = "no size"
+    this.sizeCost = 0;
+    this.sizeMultiplier = 0;
   }
 };
 
@@ -70,31 +74,41 @@ Pizza.prototype.selectCrust = function(value) {
     this.crust = "deep";
     this.crustAddCost = 2;
   } else if (value === 4) {
-    this.crust = gf;
+    this.crust = "gf";
     this.crustAddCost = 3;
+  } else {
+    this.crust = "No crust selected";
+    this.crustAddCost = 0;
   }
 };
 
 Pizza.prototype.selectSauce = function(value) {
   if (value === 1) {
-    this.sauce = "red";
+    this.sauce = "Classic Red Color";
   } else if (value === 2) {
-    this.sauce = "marinara";
+    this.sauce = "Marinara al Fresco";
   } else if (value === 3) {
-    this.sauce = "garlic";
+    this.sauce = "Creamy Pale Garlic";
+  } else if (value === 4){
+    this.sauce = "Thick-N-Rich Alfredo";
   } else {
-    this.sauce = "alfredo";
+    this.sauce = "No Sauce Selected";
   }
 };
 
 Pizza.prototype.selectExtraSauce = function(value) {
   if (value === 1) {
     this.extraSauce = true;
+  } else {
+    this.extraSauce = false;
   }
 };
 
 Pizza.prototype.selectExtraCheese = function(value) {
-  if (value === 2) {
+
+  if (value === 1) {
+    this.extraCheese = 0;
+  } else if (value === 2) {
     this.extraCheese = 1;
   } else if (value === 3) {
     this.extraCheese = 2;
@@ -108,11 +122,11 @@ Pizza.prototype.selectToppings = function(array) {
   this.toppingMultipliers.push(array[0]);
 };
 
-Order.prototype.multiplyToppings = function(pizzaObj) {
-  var array = pizzaObj.toppings;
-  var totalToppingCost = NaN;
-  var toppingTotals = array.map(function(array, pizzaObj) {
-    var cost = array[1];
+multiplyToppings = function(pizzaObj) {
+  var toppingArray = pizzaObj.toppings;
+  var totalToppingCost = 0;
+  var toppingTotals = toppingArray.map(function(topping, pizzaObj) {
+    var cost = topping[1];
     var size = pizzaObj.sizeMultiplier;
     return cost * size;
   });
@@ -123,15 +137,42 @@ Order.prototype.multiplyToppings = function(pizzaObj) {
 };
 
 Order.prototype.calculatePrice = function (pizzaObj) {
-  this.price = pizzaObj.sizeCost + this.prototype.multiplyToppings(pizzaObj) + (pizzaObj.extraCheese * pizzaObj.sizeMultiplier) + pizzaObj.extraSauce;
+  this.price = pizzaObj.sizeCost + this.multiplyToppings(pizzaObj) + (pizzaObj.extraCheese * pizzaObj.sizeMultiplier) + pizzaObj.extraSauce;
   return this.price;
-};
+}.bind(this);
 
 
 //Front End Logic
 function fillBase(pizzaObj, orderObj) {
-  
-}
+  if (pizzaObj.size === 1) {
+    $("#display-size").append("Small");
+  } else if (pizzaObj.size === 1) {
+    $("#display-size").append("Medium");
+  } else if (pizzaObj.size === 1) {
+    $("#display-size").append("Large");
+  } else if (pizzaObj.size === 1) {
+    $("#display-size").append("Gigantotronic");
+  } else {
+    $("#display-size").append("No size selected");
+  }
+  $("#display-crust").append(pizzaObj.crust);
+  $("#display-sauce").append(pizzaObj.sauce);
+  if (pizzaObj.extraSauce === true) {
+    $("#display-extra-sauce").append("Yep");
+  } else {
+    $("#display-extra-sauce").append("Nope");
+  }
+  if (pizzaObj.extraCheese === 1) {
+    $("#display-extra-cheese").append("Normal Cheese");
+  } else if (pizzaObj.extraCheese === 2) {
+    $("#display-extra-cheese").append("Extra Cheese");
+  } else if (pizzaObj.extraCheese === 3) {
+    $("#display-extra-cheese").append("Double Cheese");
+  } else {
+    $("#display-extra-cheese").append("No Cheese At All");
+  }
+  $("#display-price").append(orderObj.calculatePrice(pizzaObj));
+};
 
 //User Interface
 $(document).ready(function() {
@@ -140,13 +181,13 @@ $(document).ready(function() {
     StartOrder();
     $("#order-builder").show();
   });
-  $("#submit-base").submit(function(event) {
+  $("#submit-base").click(function(event) {
     event.preventDefault();
-    var userSize = $("#select-size").val();
-    var userCrust = $("#select-crust").val();
-    var userSauce = $("#select-sauce").val();
-    var userExtraSauce = $("select-extra-sauce").val();
-    var userExtraCheese = $("select-extra-cheese").val();
+    var userSize = parseInt($("#select-size").val());
+    var userCrust = parseInt($("#select-crust").val());
+    var userSauce = parseInt($("#select-sauce").val());
+    var userExtraSauce = parseInt($("#select-extra-sauce").val());
+    var userExtraCheese = parseInt($("#select-extra-cheese").val());
 
     newPizza.selectSize(userSize);
     newPizza.selectCrust(userCrust);
@@ -155,6 +196,6 @@ $(document).ready(function() {
     newPizza.selectExtraCheese(userExtraCheese);
     newOrder.calculatePrice(newPizza);
 
-
-  })
+    fillBase(newPizza, newOrder);
+  });
 });
