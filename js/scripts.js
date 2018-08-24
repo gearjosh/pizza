@@ -176,8 +176,8 @@ function fillBase(pizzaObj, orderObj) {
 
 function addTopping(pizzaObj, orderObj, id, toppingArray) {
   var toppingIndex = parseInt(id);
-  toppingArray.forEach(function(topping) {
-    if (topping[1] === toppingIndex) {
+  toppingArray.forEach(function(topping, index) {
+    if (index === toppingIndex) {
       pizzaObj.selectToppings(toppingArray);
       $("#display-toppings").append("<li>" + topping[0] + "</li>");
     }
