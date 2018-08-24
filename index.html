@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css" />
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
     <script src="js/scripts.js" type="text/javascript"></script>
     <title>PizzaTron</title>
   </head>
@@ -16,62 +15,49 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col s8">
+          <div class="col-md-8">
             <div class="pizzaBase">
-              <div class="row">
-                <div class="input-field col s12"> <!--size select-->
-                  <select id="sizeID">
-                    <option value="" disabled selected>Choose your pizza size</option>
-                    <option value="1">Small</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Large</option>
-                    <option value="4">Gigantotronic</option>
-                  </select>
-                  <label>Choose your pizza size</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12"> <!--crust select-->
-                  <select id="crustID">
-                    <option value="" disabled selected>Choose your pizza crust</option>
-                    <option value="1">Thrown-in-the-air Style</option>
-                    <option value="2">Very Super Thin</option>
-                    <option value="3">The Deepest Dish</option>
-                    <option value="4">Free of Glutens</option>
-                  </select>
-                  <label>Choose your pizza crust</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12"> <!--sauce select-->
-                  <select id="sauceID">
-                    <option value="" disabled selected>Choose your pizza sauce</option>
-                    <option value="1">Classic Red Color</option>
-                    <option value="2">Zesty Marinara Style</option>
-                    <option value="3">Creamy Pale Garlic</option>
-                    <option value="4">Thick-N-Rich Alfredo</option>
-                  </select>
-                  <label>Choose your pizza sauce</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12"> <!--extra cheese select-->
-                  <select id="extraCheeseID">
-                    <option value="" disabled selected>Extra Cheese?</option>
-                    <option value="2">Just normal cheese.</option>
-                    <option value="2">More cheese!</option>
-                    <option value="3">Waaaay more cheese!</option>
-                    <option value="4">No cheese for me at all.</option>
-                  </select>
-                  <label>Extra Cheese?</label>
-                </div>
-              </div>
+              <select class="custom-select">
+                <option selected>Choose your pizza size</option>
+                <option value="1">Small</option>
+                <option value="2">Medium</option>
+                <option value="3">Large</option>
+                <option value="4">Gigantotronic</option>
+              </select>
+              <br>
+              <br>
+              <select class="custom-select">
+                <option selected>Choose your pizza crust</option>
+                <option value="1">Thrown-in-the-air Style</option>
+                <option value="2">Very Super Thin</option>
+                <option value="3">The Deepest Dish</option>
+                <option value="4">Free of Glutens</option>
+              </select>
+              <br>
+              <br>
+              <select class="custom-select">
+                <option selected>Choose your pizza sauce</option>
+                <option value="1">Classic Red Color</option>
+                <option value="2">Marinara al Fresco</option>
+                <option value="3">Creamy Pale Garlic</option>
+                <option value="4">Thick-N-Rich Alfredo</option>
+              </select>
+              <br>
+              <br>
+              <select class="custom-select">
+                <option selected>Extra Cheese?</option>
+                <option value="1">Just normal cheese.</option>
+                <option value="2">More cheese!</option>
+                <option value="3">Waaaay more cheese!</option>
+                <option value="4">No cheese for me at all.</option>
+              </select>
+
             </div>
             <div class="toppings">
               <label for="Pepperoni"></label>
             </div>
           </div> <!--end of column 1-->
-          <div class="col s4">
+          <div class="col-md-4">
             <!-- display order here -->
           </div>
         </div> <!--end of row-->

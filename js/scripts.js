@@ -52,6 +52,6 @@ Order.prototype.calculatePrice = function () {
 
 
 //Front End Logic
-$(function) {
-  $('select').formSelect();
-};
+$(document).ready(function() {
+
+});
