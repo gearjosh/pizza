@@ -1,7 +1,27 @@
+.container {
+
+}
+
 .toppings {
   margin-top: 15px;
 }
 
 .topping-button {
+  margin-top: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+}
+
+select {
+  margin-top: 15px;
+}
+
+button {
   margin-top: 15px;
 }
