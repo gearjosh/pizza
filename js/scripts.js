@@ -91,17 +91,23 @@ Pizza.prototype.selectToppings = function(array) {
   this.toppingMultipliers.push(array[0]);
 };
 
-Order.prototype.multiplyToppings = function(array, pizzaObj) {
+Order.prototype.multiplyToppings = function(pizzaObj) {
   var array = pizzaObj.toppings;
-  var toppingTotal = array.map(function(array, pizzaObj) {
+  var totalToppingCost = NaN;
+  var toppingTotals = array.map(function(array, pizzaObj) {
     var cost = array[1];
     var size = pizzaObj.sizeMultiplier;
     return cost * size;
   });
+  for (var i=0; i<toppingTotals.length; i++) {
+    totalToppingCost += toppingTotals;
+  }
+  return totalToppingCost;
 };
 
 Order.prototype.calculatePrice = function (pizzaObj) {
-  this.price = (pizzaObj.sizeCost + )
+  this.price = pizzaObj.sizeCost + this.prototype.multiplyToppings(pizzaObj) + pizzaObj.extraCheese + pizzaObj.extraSauce;
+  return this.price;
 };
 
 
