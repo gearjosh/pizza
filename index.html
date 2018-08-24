@@ -9,6 +9,65 @@
     <title>PizzaTron</title>
   </head>
   <body>
-
+    <div class="container">
+      <div class="header">
+        <h1>PizzaTron 2000</h1>
+        <h3>Ordering pizzas since before you were born</h3>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col s8">
+            <div class="pizzaBase">
+              <div class="input-field col s12"> <!--size select-->
+                <select id="sizeID">
+                  <option value="" disabled selected>Choose your pizza size</option>
+                  <option value="1">Small</option>
+                  <option value="2">Medium</option>
+                  <option value="3">Large</option>
+                  <option value="4">Gigantotronic</option>
+                </select>
+                <label>Choose your pizza size</label>
+              </div>
+              <div class="input-field col s12"> <!--crust select-->
+                <select id="crustID">
+                  <option value="" disabled selected>Choose your pizza crust</option>
+                  <option value="1">Thrown-in-the-air Style</option>
+                  <option value="2">Very Super Thin</option>
+                  <option value="3">The Deepest Dish</option>
+                  <option value="4">Free of Glutens</option>
+                </select>
+                <label>Choose your pizza crust</label>
+                <div class="input-field col s12"> <!--sauce select-->
+                  <select id="sauceID">
+                    <option value="" disabled selected>Choose your pizza sauce</option>
+                    <option value="1">Classic Red Color</option>
+                    <option value="2">Zesty Marinara Style</option>
+                    <option value="3">Creamy Pale Garlic</option>
+                    <option value="4">Thick-N-Rich Alfredo</option>
+                  </select>
+                  <label>Choose your pizza sauce</label>
+                </div>
+                <div class="input-field col s12"> <!--extra cheese select-->
+                  <select id="sauceID">
+                    <option value="" disabled selected>Extra Cheese?</option>
+                    <option value="2">Just normal cheese.</option>
+                    <option value="2">More cheese!</option>
+                    <option value="3">Waaaay more cheese!</option>
+                    <option value="4">No cheese for me at all.</option>
+                  </select>
+                  <label>Extra Cheese?</label>
+                </div>
+              </div>
+            </div>
+            <div class="toppings">
+              <label for=""></label>
+            </div>
+          </div>
+          <div class="col s4">
+            <!-- display order here -->
+          </div>
+        </div> <!--end of row-->
+      </div> <!--end of inner container-->
+    </div> <!-- end of outer container -->
   </body>
 </html>

@@ -1,6 +1,7 @@
 //Back End Logic
 
-var Toppings //[topping, priceMultiplier]
+var Toppings = [
+  //[topping, priceMultiplier]
   ["extraCheese", 1],
   ["pepperoni", 1],
   ["sausage", 1],
