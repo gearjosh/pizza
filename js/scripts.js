@@ -5,7 +5,7 @@ var Toppings = [
   ["pepperoni", 1],
   ["sausage", 1],
   ["salami", 1],
-  ["canadianBacon", 1],
+  ["ham", 1],
   ["bacon", 1],
   ["chicken", 1],
   ["anchovies", 1],

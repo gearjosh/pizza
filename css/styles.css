@@ -2,6 +2,26 @@
   display: none;
 }
 
+#toppings {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+#submit {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  border: 5px solid red;
+}
+
+#display-order {
+  border: 3px solid green;
+  padding: 10px;
+  border-radius: 10%;
+}
+
 .header {
   margin-bottom: 15px;
 }
@@ -18,14 +38,29 @@
   color: red;
 }
 
+.topping-button {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; */
+  /* border-style: solid;
+  border-width: 3px;
+  border-radius: 20%;
+  border-color: green; */
+  max-height: 150px;
+}
+
 select {
   margin-top: 15px;
 }
 
 button {
-  margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 label {
-  margin-top: 15px;
+  margin: 15px;
 }

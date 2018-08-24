@@ -16,127 +16,142 @@
       </div>
       <div id="order-builder"class="container">
         <div class="row">
-          <div class="col-md-8">
-            <div class="form pizza-base">
-              <h4>Pizza Base</h4>
+          <div class="col-md-9">
+            <div class="form">
 
-              <select class="custom-select">
-                <option selected>Choose your pizza size</option>
-                <option value="1">Small ($10)</option>
-                <option value="2">Medium ($13)</option>
-                <option value="3">Large ($16)</option>
-                <option value="4">Gigantotronic ($20)</option>
-              </select>
+              <div class="row">
 
-              <select class="custom-select">
-                <option selected>Choose your pizza crust</option>
-                <option value="1">Thrown-in-the-air Style</option>
-                <option value="2">Very Super Thin</option>
-                <option value="3">The Deepest Dish (+$2)</option>
-                <option value="4">Free of Glutens (+$3)</option>
-              </select>
+                <div class="col-md-4">
+                  <h4>Pizza Base</h4>
+                  <select class="custom-select">
+                    <option selected>Choose your pizza size</option>
+                    <option value="1">Small ($10)</option>
+                    <option value="2">Medium ($13)</option>
+                    <option value="3">Large ($16)</option>
+                    <option value="4">Gigantotronic ($20)</option>
+                  </select>
 
-              <select class="custom-select">
-                <option selected>Choose your pizza sauce</option>
-                <option value="1">Classic Red Color</option>
-                <option value="2">Marinara al Fresco</option>
-                <option value="3">Creamy Pale Garlic</option>
-                <option value="4">Thick-N-Rich Alfredo</option>
-              </select>
+                  <select class="custom-select">
+                    <option selected>Choose your pizza crust</option>
+                    <option value="1">Thrown-in-the-air Style</option>
+                    <option value="2">Very Super Thin</option>
+                    <option value="3">The Deepest Dish (+$2)</option>
+                    <option value="4">Free of Glutens (+$3)</option>
+                  </select>
 
-              <div id="extra-sauce-button">
-                <button type="button" id="extra-sauce" class="btn btn-success">Extra Sauce?</button>
+                  <select class="custom-select">
+                    <option selected>Choose your pizza sauce</option>
+                    <option value="1">Classic Red Color</option>
+                    <option value="2">Marinara al Fresco</option>
+                    <option value="3">Creamy Pale Garlic</option>
+                    <option value="4">Thick-N-Rich Alfredo</option>
+                  </select>
+
+                  <div id="extra-sauce-button">
+                    <button type="button" id="extra-sauce" class="btn btn-primary">Extra Sauce?</button>
+                  </div>
+
+                  <select class="custom-select">
+                    <option selected>Extra Cheese?</option>
+                    <option value="1">Just normal cheese.</option>
+                    <option value="2">More cheese!</option>
+                    <option value="3">Waaaay more cheese!</option>
+                    <option value="4">No cheese for me at all.</option>
+                  </select>
+
+                </div>
+
+                <div id="toppings" class="col-md-8">
+
+                <h4>Toppings</h4>
+
+                  <div class="row">
+
+                    <div class="col-md-4">
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Pepperoni</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Sausage</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Salami</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Ham</button>
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Bacon</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Chicken</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Anchovies</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Pineapple</button>
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Mushrooms</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Olives</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Peppers</button>
+                      </div>
+
+                      <div class="topping-button">
+                        <button type="button" class="btn btn-primary">Add Onions</button>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              <br>
+              <br>
+              <button id="submit" type="submit" class="btn btn-success">I want <span class="bold red">this </span>kind of pizza</button>
+
               </div>
-
-              <select class="custom-select">
-                <option selected>Extra Cheese?</option>
-                <option value="1">Just normal cheese.</option>
-                <option value="2">More cheese!</option>
-                <option value="3">Waaaay more cheese!</option>
-                <option value="4">No cheese for me at all.</option>
-              </select>
-
-              <button type="submit" class="btn btn-success">I want <span class="bold red">this </span>kind of pizza</button>
 
             </div> <!--end of form-->
-
-            <div class="toppings">
-
-              <div class="topping-button">
-                <label for="0">Pepperoni</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="1">Sausage</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="2">Salami</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="3">Canadian Bacon</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="4">Bacon</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="5">Chicken</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="6">Anchovies</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="7">Pineapple</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="8">Mushrooms</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="9">Olives</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="10">Peppers</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
-
-              <div class="topping-button">
-                <label for="11">Onions</label>
-                <br>
-                <button type="button" class="btn btn-primary">Add</button>
-              </div>
+          </div> <!--end of column 1-->
+          <div class="col-md-3">
+            <h4>Your Pizza</h4>
+            <div id="display-order">
+              <p id="display-size">Size: </p>
+              <p id="display-crust">Crust: </p>
+              <p id="display-sauce">Sauce: </p>
+              <p id="display-extra-cheese">Extra Cheese: </p>
+              <p>Toppings: </p>
+              <ul id="display-toppings">
+              </ul>
+              <p id="display-price">Total: </p>
 
             </div>
-          </div> <!--end of column 1-->
-          <div class="col-md-4">
             <!-- display order here -->
           </div>
         </div> <!--end of row-->
