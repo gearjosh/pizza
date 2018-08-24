@@ -113,5 +113,8 @@ Order.prototype.calculatePrice = function (pizzaObj) {
 
 //Front End Logic
 $(document).ready(function() {
-
+  $("#create-order-button").click(function(event) {
+    event.preventDefault();
+    $("#order-builder").show();
+  });
 });
