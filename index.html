@@ -23,7 +23,7 @@
               <div class="col-md-4">
                 <div class="form">
                   <h4>Pizza Base</h4>
-                  <select class="custom-select">
+                  <select id="select-size" class="custom-select">
                     <option selected>Choose your pizza size</option>
                     <option value="1">Small ($10)</option>
                     <option value="2">Medium ($13)</option>
@@ -31,7 +31,7 @@
                     <option value="4">Gigantotronic ($20)</option>
                   </select>
 
-                  <select class="custom-select">
+                  <select id="select-crust" class="custom-select">
                     <option selected>Choose your pizza crust</option>
                     <option value="1">Thrown-in-the-air Style</option>
                     <option value="2">Very Super Thin</option>
@@ -39,7 +39,7 @@
                     <option value="4">Free of Glutens (+$3)</option>
                   </select>
 
-                  <select class="custom-select">
+                  <select id="select-sauce" class="custom-select">
                     <option selected>Choose your pizza sauce</option>
                     <option value="1">Classic Red Color</option>
                     <option value="2">Marinara al Fresco</option>
@@ -47,17 +47,21 @@
                     <option value="4">Thick-N-Rich Alfredo</option>
                   </select>
 
-                  <div id="extra-sauce-button">
-                    <button type="button" id="extra-sauce" class="btn btn-primary">Extra Sauce?</button>
-                  </div>
+                  <select id="select-extra-sauce" class="custom-select">
+                    <option selected>Extra Sauce?</option>
+                    <option value="1">Normal sauce, please</option>
+                    <option value="2">All the sauce you got</option>
+                  </select>
 
-                  <select class="custom-select">
+                  <select id="select-extra-cheese"class="custom-select">
                     <option selected>Extra Cheese?</option>
                     <option value="1">Just normal cheese.</option>
                     <option value="2">More cheese!</option>
                     <option value="3">Waaaay more cheese!</option>
                     <option value="4">No cheese for me at all.</option>
                   </select>
+
+                  <button id="submit-base" class="btn btn-success" type="submit">Pizza Base Locked In</button>
 
                 </div>
 

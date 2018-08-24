@@ -36,6 +36,11 @@ function Order() {
   this.delivery = false;
 };
 
+function StartOrder() {
+  newOrder = new Order;
+  newPizza = new Pizza;
+}
+
 Pizza.prototype.selectSize = function(value) {
   if (value === 1) {
     this.size = "sm";
@@ -70,9 +75,21 @@ Pizza.prototype.selectCrust = function(value) {
   }
 };
 
-Pizza.prototype.selectSauce = function(boolean) {
-  if (boolean === true) {
-    extraSauce = true;
+Pizza.prototype.selectSauce = function(value) {
+  if (value === 1) {
+    this.sauce = "red";
+  } else if (value === 2) {
+    this.sauce = "marinara";
+  } else if (value === 3) {
+    this.sauce = "garlic";
+  } else {
+    this.sauce = "alfredo";
+  }
+};
+
+Pizza.prototype.selectExtraSauce = function(value) {
+  if (value === 1) {
+    this.extraSauce = true;
   }
 };
 
@@ -106,19 +123,38 @@ Order.prototype.multiplyToppings = function(pizzaObj) {
 };
 
 Order.prototype.calculatePrice = function (pizzaObj) {
-  this.price = pizzaObj.sizeCost + this.prototype.multiplyToppings(pizzaObj) + pizzaObj.extraCheese + pizzaObj.extraSauce;
+  this.price = pizzaObj.sizeCost + this.prototype.multiplyToppings(pizzaObj) + (pizzaObj.extraCheese * pizzaObj.sizeMultiplier) + pizzaObj.extraSauce;
   return this.price;
 };
 
 
 //Front End Logic
-
+function fillBase(pizzaObj, orderObj) {
+  
+}
 
 //User Interface
 $(document).ready(function() {
   $("#create-order-button").click(function(event) {
     event.preventDefault();
+    StartOrder();
     $("#order-builder").show();
   });
-  
+  $("#submit-base").submit(function(event) {
+    event.preventDefault();
+    var userSize = $("#select-size").val();
+    var userCrust = $("#select-crust").val();
+    var userSauce = $("#select-sauce").val();
+    var userExtraSauce = $("select-extra-sauce").val();
+    var userExtraCheese = $("select-extra-cheese").val();
+
+    newPizza.selectSize(userSize);
+    newPizza.selectCrust(userCrust);
+    newPizza.selectSauce(userSauce);
+    newPizza.selectExtraSauce(userExtraSauce);
+    newPizza.selectExtraCheese(userExtraCheese);
+    newOrder.calculatePrice(newPizza);
+
+
+  })
 });
