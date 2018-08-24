@@ -2,7 +2,6 @@
 
 var Toppings = [
   //[topping, priceMultiplier]
-  ["extraCheese", 1],
   ["pepperoni", 1],
   ["sausage", 1],
   ["salami", 1],
