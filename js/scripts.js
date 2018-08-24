@@ -1,19 +1,19 @@
 //Back End Logic
 
-var Toppings = [
+var toppings = [
   //[topping, priceMultiplier]
-  ["pepperoni", 1],
-  ["sausage", 1],
-  ["salami", 1],
-  ["ham", 1],
-  ["bacon", 1],
-  ["chicken", 1],
-  ["anchovies", 1],
-  ["pineapple", 0.5],
-  ["mushrooms", 0.5],
-  ["olives", 0.5],
-  ["peppers", 0.5],
-  ["onions", 0.5]
+  ["Pepperoni", 1],
+  ["Sausage", 1],
+  ["Salami", 1],
+  ["Ham", 1],
+  ["Bacon", 1],
+  ["Chicken", 1],
+  ["Anchovies", 1],
+  ["Pineapple", 0.5],
+  ["Mushrooms", 0.5],
+  ["Olives", 0.5],
+  ["Peppers", 0.5],
+  ["Onions", 0.5]
 ]
 
 function Pizza() {
@@ -119,7 +119,7 @@ Pizza.prototype.selectExtraCheese = function(value) {
 
 Pizza.prototype.selectToppings = function(array) {
   this.toppings.push(array[0]);
-  this.toppingMultipliers.push(array[0]);
+  this.toppingMultipliers.push(array[1]);
 };
 
 multiplyToppings = function(pizzaObj) {
@@ -144,13 +144,13 @@ Order.prototype.calculatePrice = function (pizzaObj) {
 
 //Front End Logic
 function fillBase(pizzaObj, orderObj) {
-  if (pizzaObj.size === 1) {
+  if (pizzaObj.size === "sm") {
     $("#display-size").append("Small");
-  } else if (pizzaObj.size === 1) {
+  } else if (pizzaObj.size === "md") {
     $("#display-size").append("Medium");
-  } else if (pizzaObj.size === 1) {
+  } else if (pizzaObj.size === "lg") {
     $("#display-size").append("Large");
-  } else if (pizzaObj.size === 1) {
+  } else if (pizzaObj.size === "xl") {
     $("#display-size").append("Gigantotronic");
   } else {
     $("#display-size").append("No size selected");
@@ -172,6 +172,17 @@ function fillBase(pizzaObj, orderObj) {
     $("#display-extra-cheese").append("No Cheese At All");
   }
   $("#display-price").append(orderObj.calculatePrice(pizzaObj));
+};
+
+function addTopping(pizzaObj, orderObj, id, toppingArray) {
+  var toppingIndex = parseInt(id);
+  toppingArray.forEach(function(topping) {
+    if (topping[1] === toppingIndex) {
+      pizzaObj.selectToppings(toppingArray);
+      $("#display-toppings").append("<li>" + topping[0] + "</li>");
+    }
+    $("#display-price").append(orderObj.calculatePrice(pizzaObj));
+  });
 };
 
 //User Interface
@@ -197,5 +208,10 @@ $(document).ready(function() {
     newOrder.calculatePrice(newPizza);
 
     fillBase(newPizza, newOrder);
+  });
+  $(".topping-button").click(function(event) {
+    event.preventDefault();
+    var clickedID = $(this).attr("id");
+    addTopping(newPizza, newOrder, clickedID, toppings);
   });
 });
