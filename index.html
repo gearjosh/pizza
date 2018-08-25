@@ -50,7 +50,7 @@
                   <select id="select-extra-sauce" class="custom-select">
                     <option selected>Extra Sauce?</option>
                     <option value="1">Normal sauce, please</option>
-                    <option value="2">All the sauce you got</option>
+                    <option value="2">All the sauce you got (+$1)</option>
                   </select>
 
                   <select id="select-extra-cheese"class="custom-select">
@@ -61,6 +61,8 @@
                     <option value="4">No cheese for me at all.</option>
                   </select>
 
+                  <label class="grey">Extra cheese charged as additional meat topping</label>
+
                   <button id="submit-base" class="btn btn-success" type="submit">Pizza Base Locked In</button>
 
                 </div>
@@ -70,6 +72,8 @@
               <div id="toppings" class="col-md-8">
 
               <h4>Toppings</h4>
+              <p><span class="bold">Meats -</span> Small: $0.75 | Medium: $1 | Large: $1.50 | Giganto: $2</p>
+              <p><span class="bold">Veggies -</span> Small: $0.38 | Medium: $0.50 | Large: $0.75 | Giganto: $1</p>
 
                 <div class="row">
 
@@ -147,15 +151,15 @@
               <h4>Your Pizza</h4>
 
               <div id="display-order">
-                <p id="display-size">Size: </p>
-                <p id="display-crust">Crust: </p>
-                <p id="display-sauce">Sauce: </p>
-                <p id="display-extra-sauce">Extra Sauce: </p>
-                <p id="display-extra-cheese">Extra Cheese: </p>
-                <p>Toppings: </p>
+                <p><span class="bold">Size: </span><span id="display-size"></span></p>
+                <p><span class="bold">Crust: </span><span id="display-crust"></span></p>
+                <p><span class="bold">Sauce: </span><span id="display-sauce"></span></p>
+                <p><span class="bold">Extra Sauce: </span><span id="display-extra-sauce"></span></p>
+                <p><span class="bold">Extra Cheese: </span><span id="display-extra-cheese"></span></p>
+                <p><span class="bold">Toppings: </span><span></span></p>
                 <ul id="display-toppings">
                 </ul>
-                <p id="display-price">Total: </p>
+                <p><span class="bold">Total: </span><span id="display-price"></span></p>
               </div>
 
             </div>

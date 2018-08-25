@@ -18,7 +18,15 @@
 #display-order {
   border: 3px solid green;
   padding: 10px;
-  border-radius: 10%;
+  border-radius: 4%;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+  color: grey;
+}
+
+.grey {
+  color: grey;
 }
 
 .header {
@@ -38,14 +46,7 @@
 }
 
 .topping-button {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center; */
-  /* border-style: solid;
-  border-width: 3px;
-  border-radius: 20%;
-  border-color: green; */
+  display: none;
   max-height: 150px;
 }
 
