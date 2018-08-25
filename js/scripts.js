@@ -1,19 +1,18 @@
 //Back End Logic
 
 var toppings = [
-  //[topping, priceMultiplier]
-  ["Pepperoni", 1],
-  ["Sausage", 1],
-  ["Salami", 1],
-  ["Ham", 1],
-  ["Bacon", 1],
-  ["Chicken", 1],
-  ["Anchovies", 1],
-  ["Pineapple", 0.5],
-  ["Mushrooms", 0.5],
-  ["Olives", 0.5],
-  ["Peppers", 0.5],
-  ["Onions", 0.5]
+  ["Pepperoni", 1.00],
+  ["Sausage", 1.00],
+  ["Salami", 1.00],
+  ["Ham", 1.00],
+  ["Bacon", 1.00],
+  ["Chicken", 1.00],
+  ["Anchovies", 1.00],
+  ["Pineapple", 0.50],
+  ["Mushrooms", 0.50],
+  ["Olives", 0.50],
+  ["Peppers", 0.50],
+  ["Onions", 0.50]
 ]
 
 function Pizza() {
@@ -24,10 +23,10 @@ function Pizza() {
   this.sizeCost = NaN;
   this.sizeMultiplier = NaN;
   this.crustAddCost = 0;
-  this.extraSauce = false;
+  this.extraSauce = 0;
   this.extraCheese = 0;
   this.noCheese = false;
-  this.toppingMultipliers = [];
+  this.toppingCosts = [];
 };
 
 function Order() {
@@ -44,19 +43,19 @@ function StartOrder() {
 Pizza.prototype.selectSize = function(value) {
   if (value === 1) {
     this.size = "sm";
-    this.sizeCost = 10;
+    this.sizeCost = 10.00;
     this.sizeMultiplier = 0.75;
   } else if (value === 2) {
     this.size = "md";
-    this.sizeCost = 13;
+    this.sizeCost = 13.00;
     this.sizeMultiplier = 1;
   } else if (value === 3) {
     this.size = "lg";
-    this.sizeCost = 16;
+    this.sizeCost = 16.00;
     this.sizeMultiplier = 1.5;
   } else if (value === 4){
     this.size = "xl"
-    this.sizeCost = 20;
+    this.sizeCost = 20.00;
     this.sizeMultiplier = 2;
   } else {
     this.size = "no size"
@@ -67,15 +66,15 @@ Pizza.prototype.selectSize = function(value) {
 
 Pizza.prototype.selectCrust = function(value) {
   if (value === 1) {
-    this.crust = "thrown";
+    this.crust = "Thrown-in-the-air Style";
   } else if (value === 2) {
-    this.crust = "thin";
+    this.crust = "Very Super Thin";
   } else if (value === 3) {
-    this.crust = "deep";
-    this.crustAddCost = 2;
+    this.crust = "The Deepest Dish (+$2)";
+    this.crustAddCost = 2.00;
   } else if (value === 4) {
-    this.crust = "gf";
-    this.crustAddCost = 3;
+    this.crust = "Free of Glutens (+$3)";
+    this.crustAddCost = 3.00;
   } else {
     this.crust = "No crust selected";
     this.crustAddCost = 0;
@@ -97,10 +96,10 @@ Pizza.prototype.selectSauce = function(value) {
 };
 
 Pizza.prototype.selectExtraSauce = function(value) {
-  if (value === 1) {
-    this.extraSauce = true;
+  if (value === 2) {
+    this.extraSauce = 1.00;
   } else {
-    this.extraSauce = false;
+    this.extraSauce = 0;
   }
 };
 
@@ -109,9 +108,9 @@ Pizza.prototype.selectExtraCheese = function(value) {
   if (value === 1) {
     this.extraCheese = 0;
   } else if (value === 2) {
-    this.extraCheese = 1;
+    this.extraCheese = 1.00;
   } else if (value === 3) {
-    this.extraCheese = 2;
+    this.extraCheese = 2.00;
   } else if (value === 4) {
     this.noCheese = true;
   }
@@ -119,69 +118,90 @@ Pizza.prototype.selectExtraCheese = function(value) {
 
 Pizza.prototype.selectToppings = function(array) {
   this.toppings.push(array[0]);
-  this.toppingMultipliers.push(array[1]);
+  this.toppingCosts.push(array[1]);
 };
 
 multiplyToppings = function(pizzaObj) {
-  var toppingArray = pizzaObj.toppings;
+  debugger
+  var toppingCostArray = pizzaObj.toppingCosts;
   var totalToppingCost = 0;
-  var toppingTotals = toppingArray.map(function(topping, pizzaObj) {
-    var cost = topping[1];
-    var size = pizzaObj.sizeMultiplier;
-    return cost * size;
+  var toppingTotals = toppingCostArray.map(function(value) {
+    var size = parseFloat(pizzaObj.sizeMultiplier);
+    return value * size;
   });
   for (var i=0; i<toppingTotals.length; i++) {
-    totalToppingCost += toppingTotals;
+    totalToppingCost = parseFloat(totalToppingCost) + parseFloat(toppingTotals[i]);
   }
   return totalToppingCost;
 };
 
-Order.prototype.calculatePrice = function (pizzaObj) {
-  this.price = pizzaObj.sizeCost + this.multiplyToppings(pizzaObj) + (pizzaObj.extraCheese * pizzaObj.sizeMultiplier) + pizzaObj.extraSauce;
-  return this.price;
-}.bind(this);
+calculatePrice = function (pizzaObj, orderObj) {
+  orderObj.price = parseFloat(pizzaObj.sizeCost) +
+  parseFloat(pizzaObj.crustAddCost) +
+  parseFloat(multiplyToppings(pizzaObj)) +
+  (parseFloat(pizzaObj.extraCheese) * parseFloat(pizzaObj.sizeMultiplier)) +
+  parseFloat(pizzaObj.extraSauce);
+  var total = orderObj.price.toFixed(2);
+  return total;
+};
 
 
 //Front End Logic
+
+function emptyDisplay() {
+  $("#display-size").empty();
+  $("#display-crust").empty();
+  $("#display-sauce").empty();
+  $("#display-sauce").empty();
+  $("#display-extra-sauce").empty();
+  $("#display-extra-cheese").empty();
+  $("#display-price").empty();
+};
+
 function fillBase(pizzaObj, orderObj) {
+  emptyDisplay();
+
   if (pizzaObj.size === "sm") {
-    $("#display-size").append("Small");
+    $("#display-size").text("Small ($10)");
   } else if (pizzaObj.size === "md") {
-    $("#display-size").append("Medium");
+    $("#display-size").text("Medium ($13)");
   } else if (pizzaObj.size === "lg") {
-    $("#display-size").append("Large");
+    $("#display-size").text("Large ($16)");
   } else if (pizzaObj.size === "xl") {
-    $("#display-size").append("Gigantotronic");
+    $("#display-size").text("Gigantotronic ($20)");
   } else {
-    $("#display-size").append("No size selected");
+    $("#display-size").text("No size selected");
   }
-  $("#display-crust").append(pizzaObj.crust);
-  $("#display-sauce").append(pizzaObj.sauce);
-  if (pizzaObj.extraSauce === true) {
-    $("#display-extra-sauce").append("Yep");
+  $("#display-crust").text(pizzaObj.crust);
+  $("#display-sauce").text(pizzaObj.sauce);
+  if (pizzaObj.extraSauce === 1) {
+    $("#display-extra-sauce").text("Yep");
   } else {
-    $("#display-extra-sauce").append("Nope");
+    $("#display-extra-sauce").text("Nope");
   }
   if (pizzaObj.extraCheese === 1) {
-    $("#display-extra-cheese").append("Normal Cheese");
+    $("#display-extra-cheese").text("Normal Cheese");
   } else if (pizzaObj.extraCheese === 2) {
-    $("#display-extra-cheese").append("Extra Cheese");
+    $("#display-extra-cheese").text("Extra Cheese");
   } else if (pizzaObj.extraCheese === 3) {
-    $("#display-extra-cheese").append("Double Cheese");
+    $("#display-extra-cheese").text("Double Cheese");
+  } else if (pizzaObj.extraCheese === 4) {
+    $("#display-extra-cheese").text("No Cheese At All");
   } else {
-    $("#display-extra-cheese").append("No Cheese At All");
+    $("#display-extra-cheese").text("Normal Cheese");
   }
-  $("#display-price").append(orderObj.calculatePrice(pizzaObj));
+  $("#display-price").text("$" + calculatePrice(pizzaObj, orderObj));
 };
 
 function addTopping(pizzaObj, orderObj, id, toppingArray) {
-  var toppingIndex = parseInt(id);
+  var toppingIndex = id;
   toppingArray.forEach(function(topping, index) {
     if (index === toppingIndex) {
-      pizzaObj.selectToppings(toppingArray);
+      pizzaObj.selectToppings(topping);
       $("#display-toppings").append("<li>" + topping[0] + "</li>");
+      $("#display-price").empty();
+      $("#display-price").text("$" + calculatePrice(pizzaObj, orderObj));
     }
-    $("#display-price").append(orderObj.calculatePrice(pizzaObj));
   });
 };
 
@@ -189,29 +209,32 @@ function addTopping(pizzaObj, orderObj, id, toppingArray) {
 $(document).ready(function() {
   $("#create-order-button").click(function(event) {
     event.preventDefault();
+    emptyDisplay();
     StartOrder();
     $("#order-builder").show();
   });
+
   $("#submit-base").click(function(event) {
     event.preventDefault();
-    var userSize = parseInt($("#select-size").val());
-    var userCrust = parseInt($("#select-crust").val());
-    var userSauce = parseInt($("#select-sauce").val());
-    var userExtraSauce = parseInt($("#select-extra-sauce").val());
-    var userExtraCheese = parseInt($("#select-extra-cheese").val());
+    var userSize = parseFloat($("#select-size").val());
+    var userCrust = parseFloat($("#select-crust").val());
+    var userSauce = parseFloat($("#select-sauce").val());
+    var userExtraSauce = parseFloat($("#select-extra-sauce").val());
+    var userExtraCheese = parseFloat($("#select-extra-cheese").val());
 
     newPizza.selectSize(userSize);
     newPizza.selectCrust(userCrust);
     newPizza.selectSauce(userSauce);
     newPizza.selectExtraSauce(userExtraSauce);
     newPizza.selectExtraCheese(userExtraCheese);
-    newOrder.calculatePrice(newPizza);
 
     fillBase(newPizza, newOrder);
+    $(".topping-button").show();
   });
+
   $(".topping-button").click(function(event) {
     event.preventDefault();
-    var clickedID = $(this).attr("id");
+    var clickedID = parseFloat($(this).attr("id"));
     addTopping(newPizza, newOrder, clickedID, toppings);
   });
 });
