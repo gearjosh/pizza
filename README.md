@@ -20,7 +20,7 @@ PizzaTron 2000 takes a user's input on several different aspects of the pizza or
 - [x] PizzaTron can return pizza toppings to pizza object
 - [x] PizzaTron can calculate pizza price from selected options
 - [x] PizzaTron can return pizza price to order object
-- [ ] Extras:
+- Extras:
   - [x] PizzaTron can modify crust cost in pizza object
   - [x] PizzaTron can modify extra sauce cost in pizza object
   - [ ] PizzaTron can modify topping cost multiplier in pizza object to allow for extra toppings
@@ -37,7 +37,7 @@ PizzaTron 2000 takes a user's input on several different aspects of the pizza or
 - [x] PizzaTron allows user to select pizza toppings and displays them all to user
 - [x] PizzaTron displays updated price to user with each selection
 - [ ] PizzaTron allows user to select extra toppings
-- [ ] Extras:
+- Extras:
   - [ ] PizzaTron allows user to opt for delivery for a fee
   - [ ] PizzaTron allows user to input address for delivery
   - [ ] PizzaTron allows user to add card as a payment method
