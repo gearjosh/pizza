@@ -45,8 +45,8 @@ PizzaTron 2000 takes a user's input on several different aspects of the pizza or
 ## Setup/Installation Requirements
 
 - Navigate to https://github.com/gearjosh/pizza
-- Click the green Clone or download button on the right, and select Download ZIP.
-- Unzip `pizza-master.zip.``
+- Click the green `Clone or download` button on the right, and select Download ZIP.
+- Unzip `pizza-master.zip.`
 - Navigate to the `pizza-master` directory.
 - Inside `pizza-master`, double-click on index.html
 
